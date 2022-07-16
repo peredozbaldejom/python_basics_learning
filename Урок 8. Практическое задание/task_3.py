@@ -9,3 +9,22 @@
 
 Класс-исключение должен контролировать типы данных элементов списка.
 """
+
+
+class ListChecking(Exception):
+    def __init__(self, txt):
+        self.txt = txt
+
+
+data = input().split()
+
+for i in data:
+    print(type(i))
+    try:
+        if type(i) != 'list':
+            raise ListChecking(f'{i} this is not a number')
+    except ListChecking as err:
+        print(err)
+
+    else:
+        print('all items are numbers')
